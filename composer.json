@@ -1,0 +1,37 @@
+{
+	"name":"brainfactory/cLogRotate",
+	"description":"Save tl_log to file and clean log",
+	"keywords":["contao","logs", "systemlogs", "log rotate"],
+	"type":"contao-module",
+	"homepage":"http://brainfactory.de",
+	"license":"MIT",
+	"authors":[
+		{
+			"name":"Christian Romeni",
+			"homepage":"http://brainfactory.de",
+			"role":"Developer"
+		}
+	],
+	"support":{
+		// "forum":"http://brainfactory.de",
+		// "issues":"https://github.com/christianromeni/cLogRotate",
+		// "source":"https://github.com/christianromeni/cLogRotate"
+	},
+	"require":{
+		"php":">=5.3",
+		"contao/core":">=3,<4",
+		"contao-community-alliance/composer-installer":"*"
+	},
+	"autoload":{
+		// "classmap":["src/"]
+	},
+	"replace":{
+	},
+	"extra":{
+		"contao":{
+			"sources":{
+				"":"system/modules/cLogRotate"
+			}
+		}
+	}
+}

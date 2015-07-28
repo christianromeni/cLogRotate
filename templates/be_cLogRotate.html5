@@ -1,0 +1,24 @@
+<div id="tl_buttons">
+</div>
+<h2 class="sub_headline"><?php echo $this->headline; ?></h2>
+<div class="tl_listing_container list_view">
+	<table class="tl_listing">
+	  <tbody>
+	  	<?php foreach($this->logs as $year => $logs): ?>
+		  <tr>
+		    <td colspan="2" class="tl_folder_tlist"><?= $year; ?></td>
+		  </tr>
+		  <?php foreach ($logs as $key => $log): ?>
+		  	<tr class="even" onmouseover="Theme.hoverRow(this,1)" onmouseout="Theme.hoverRow(this,0)">
+		  		<td class="tl_file_list">
+		  			<?= $log['name']; ?>
+		  		</td>
+					<td class="tl_file_list tl_right_nowrap">
+						<a href="contao/main.php?do=cLogRotate&amp;dl=<?= $log['path']; ?>" title="Download" class="show"><img src="system/modules/cLogRotate/assets/save.png" width="14" height="16" alt="Download"></a>
+					</td>
+		  	</tr>
+		 	<?php endforeach; ?>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
