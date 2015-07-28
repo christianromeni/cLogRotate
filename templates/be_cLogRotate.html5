@@ -9,12 +9,15 @@
 		    <td colspan="2" class="tl_folder_tlist"><?= $year; ?></td>
 		  </tr>
 		  <?php foreach ($logs as $key => $log): ?>
+		  	<?php $objFile = new \File($log->path, true); ?>
 		  	<tr class="even" onmouseover="Theme.hoverRow(this,1)" onmouseout="Theme.hoverRow(this,0)">
 		  		<td class="tl_file_list">
-		  			<?= $log['name']; ?>
+		  			<span style="color:#b3b3b3;padding-right:3px">[<?php echo date('d.m.Y H:i',$log->tstamp); ?>]</span>
+		  			<span class="tl_green"><?= $log->name; ?></span>
+		  			<span class="tl_gray">(<?= System::getReadableSize($objFile->size); ?>)</span>
 		  		</td>
 					<td class="tl_file_list tl_right_nowrap">
-						<a href="contao/main.php?do=cLogRotate&amp;dl=<?= $log['path']; ?>" title="<?= $this->downloadText; ?>" class="show"><img src="system/modules/cLogRotate/assets/save.png" width="14" height="16" alt="<?= $this->downloadText; ?>"></a>
+						<a href="contao/main.php?do=cLogRotate&amp;dl=<?= String::binToUuid($log->uuid); ?>" title="<?= $this->downloadText; ?>" class="show"><img src="system/modules/cLogRotate/assets/save.png" width="14" height="16" alt="<?= $this->downloadText; ?>"></a>
 					</td>
 		  	</tr>
 		 	<?php endforeach; ?>
