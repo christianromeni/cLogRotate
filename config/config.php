@@ -17,6 +17,7 @@
 */
 
 $GLOBALS['TL_CRON'][\Config::get('rotation_timespan')][] = array('cLogRotate\cLogRotateHook', 'backupLogAndCleanUp');
+$GLOBALS['TL_HOOKS']['beforeLogPurge'][] = array('cLogRotate\cLogRotateHook', 'backupLogAndCleanUp');
 
 /**
 * Backend Module
