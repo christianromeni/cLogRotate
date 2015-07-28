@@ -1,14 +1,14 @@
 <?php
 /**
- * Translations are managed using Transifex. To create a new translation
- * or to help to maintain an existing one, please register at transifex.com.
- *
- * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-easyupdate3/language/de/
- *
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
- *
- * last-updated: 2014-12-18T00:53:33+01:00
+ * Contao Open Source CMS
+ * 
+ * Copyright (C) 2005-2013 Leo Feyer
+ * 
+ * @package   cLogRotate 
+ * @author    Christian Romeni  <c.romeni@brainfactory.de>
+ * @link      https://brainfactory.de
+ * @license   GNU 
+ * @copyright BrainFactory
  */
 
 $GLOBALS['TL_LANG']['MOD']['cLogRotate']['0']	= 'System-Log Rotation';
