@@ -14,7 +14,7 @@
 		  			<?= $log['name']; ?>
 		  		</td>
 					<td class="tl_file_list tl_right_nowrap">
-						<a href="contao/main.php?do=cLogRotate&amp;dl=<?= $log['path']; ?>" title="Download" class="show"><img src="system/modules/cLogRotate/assets/save.png" width="14" height="16" alt="Download"></a>
+						<a href="contao/main.php?do=cLogRotate&amp;dl=<?= $log['path']; ?>" title="<?= $this->downloadText; ?>" class="show"><img src="system/modules/cLogRotate/assets/save.png" width="14" height="16" alt="<?= $this->downloadText; ?>"></a>
 					</td>
 		  	</tr>
 		 	<?php endforeach; ?>

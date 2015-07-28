@@ -60,7 +60,11 @@ class cLogRotateHook extends \System
         {
             $file = new \File($file);
             $file->write($dump);
-            $file->close();
+            $continue = $file->close();
+        }
+
+        if ($continue && \Config::get('rotation_cleanup')) {
+            
         }
     }
 }

@@ -38,8 +38,9 @@ class cLogRotateBackEnd extends \BackendModule
             }
         }
         
-        $this->Template->headline = 'LogRotate Downloads';
-        $this->Template->logs = $yearLogs;
+        $this->Template->headline     = 'LogRotate Downloads';
+        $this->Template->downloadText = $GLOBALS['TL_LANG']['cLogRotate']['download'];
+        $this->Template->logs         = $yearLogs;
 
         if ($this->Input->get('dl')) {
             $this->sendFileToBrowser($this->Input->get('dl'));
