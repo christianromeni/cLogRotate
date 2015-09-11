@@ -4,6 +4,7 @@
 <div class="tl_listing_container list_view">
 	<table class="tl_listing">
 	  <tbody>
+	  <?php if(!$this->Input->get('show')): ?>
 	  	<?php foreach($this->logs as $year => $logs): ?>
 		  <tr>
 		    <td colspan="2" class="tl_folder_tlist"><?= $year; ?></td>
@@ -17,11 +18,62 @@
 		  			<span class="tl_gray">(<?= System::getReadableSize($objFile->size); ?>)</span>
 		  		</td>
 					<td class="tl_file_list tl_right_nowrap">
+						<a href="contao/main.php?do=cLogRotate&amp;show=<?= String::binToUuid($log->uuid); ?>" title="<?= $this->showText; ?>" class="show"><img src="system/themes/flexible/images/show.gif" width="14" height="16" alt="<?= $this->showText; ?>"></a>
 						<a href="contao/main.php?do=cLogRotate&amp;dl=<?= String::binToUuid($log->uuid); ?>" title="<?= $this->downloadText; ?>" class="show"><img src="system/modules/cLogRotate/assets/save.png" width="14" height="16" alt="<?= $this->downloadText; ?>"></a>
 					</td>
 		  	</tr>
 		 	<?php endforeach; ?>
 		<?php endforeach; ?>
+		<?php else: ?>
+			<?php foreach($this->logs as $log): ?>
+				<tr>
+					<td>
+						<div class="ellipsis" style="margin-left: -25px;">
+							<table class="tl_show">
+								<tbody>
+									<tr>
+										<td width="160px"><span class="tl_label">ID: </span></td>
+										<td><?= $log['id'] ?></td>
+									</tr>
+									<tr>
+										<td class="tl_bg"><span class="tl_label">Datum: </span></td>
+										<td class="tl_bg"><?= date('d.m.Y H:m', $log['tstamp']) ?></td>
+									</tr>
+									<tr>
+										<td><span class="tl_label">Ursprung: </span></td>
+										<td><?= $log['source'] ?></td>
+									</tr>
+									<tr>
+										<td class="tl_bg"><span class="tl_label">Kategorie: </span></td>
+										<td class="tl_bg"><?= $log['action'] ?></td>
+									</tr>
+									<tr>
+										<td><span class="tl_label">Benutzer: </span></td>
+										<td><?= $log['username'] ?></td>
+									</tr>
+									<tr>
+										<td class="tl_bg"><span class="tl_label">Details: </span></td>
+										<td class="tl_bg" style="word-break: break-word;"><?= $log['text'] ?></td>
+									</tr>
+									<tr>
+										<td><span class="tl_label">Funktion: </span></td>
+										<td><?= $log['func'] ?></td>
+									</tr>
+									<tr>
+										<td class="tl_bg"><span class="tl_label">IP-Adresse: </span></td>
+										<td class="tl_bg"><?= $log['ip'] ?></td>
+									</tr>
+									<tr>
+										<td><span class="tl_label">Browser: </span></td>
+										<td><?= $log['browser'] ?></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		<?php endif; ?>
 		</tbody>
 	</table>
 </div>

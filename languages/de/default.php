@@ -14,4 +14,4 @@
 $GLOBALS['TL_LANG']['MOD']['cLogRotate']['0']	= 'System-Log Rotation';
 $GLOBALS['TL_LANG']['MOD']['cLogRotate']['1']	= 'Download der erstellten Log Dateien';
 $GLOBALS['TL_LANG']['cLogRotate']['download']	= 'Datei herunterladen';
-
+$GLOBALS['TL_LANG']['cLogRotate']['show']	= 'Log anzeigen';

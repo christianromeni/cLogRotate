@@ -2,13 +2,13 @@
 
 /**
  * Contao Open Source CMS
- * 
+ *
  * Copyright (C) 2005-2013 Leo Feyer
- * 
- * @package   cLogRotate 
+ *
+ * @package   cLogRotate
  * @author    Christian Romeni  <c.romeni@brainfactory.de>
  * @link      https://brainfactory.de
- * @license   GNU 
+ * @license   GNU
  * @copyright BrainFactory
  */
 
@@ -31,7 +31,7 @@ class cLogRotateHook extends \System
     /**
      * backupLogAndCleanUp cron
      *
-     * Backup tl_log to file and clean it up 
+     * Backup tl_log to file and clean it up
      *
      */
     public function backupLogAndCleanUp()
@@ -39,6 +39,7 @@ class cLogRotateHook extends \System
         // Define Filename and Folder
         $file   = $GLOBALS['TL_CONFIG']['uploadPath'] . '/cLogRotate/' . date('Y') . '/' . date('Y-m-d_-_H-i-s') . '.log';
         $folder = dirname($file);
+        $continue = false;
 
         // Create Folder if it does not exist
         if (!is_dir($folder))
@@ -56,7 +57,7 @@ class cLogRotateHook extends \System
         $dump = serialize($result);
 
         // Create File and write the dump in it.
-        if (!file_exists(TL_ROOT .'/'. $file)) 
+        if (!file_exists(TL_ROOT .'/'. $file) && $dump != 'a:0:{}')
         {
             $file = new \File($file);
             $file->write($dump);
@@ -64,7 +65,8 @@ class cLogRotateHook extends \System
         }
 
         if ($continue && \Config::get('rotation_cleanup')) {
-            
+            $objDatabase = \Database::getInstance();
+            $objDatabase->execute("DELETE FROM tl_log");
         }
     }
 }
